@@ -4,7 +4,7 @@
     <title>01背包问题</title>
     <url>/sublog.github.io/2020/08/14/01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>
-    <div id="aplayer-cxMmeHcG" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-NTXFpHCS" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1383205688" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"
     ></div>
 <p>朴素的 动规的 基本表示：</p>
@@ -30,60 +30,11 @@
     <title>My first blog</title>
     <url>/sublog.github.io/2020/03/13/My-first-blog/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>
-    <div id="aplayer-IqMFrzFn" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-XzeVSmET" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="2919622" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"
     ></div>
 <h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//熄灯问题</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> old[<span class="number">10</span>], lights[<span class="number">10</span>], result[<span class="number">10</span>];  <span class="comment">//原数组，灯数组，结果数组</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetBit</span><span class="params">(<span class="keyword">char</span> &amp;c, <span class="keyword">int</span> i, <span class="keyword">int</span> v)</span>  <span class="comment">//c代表第i行的字符，把第i行的第j位设置成v</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(v) &#123;</span><br><span class="line">        c = c | (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        c = c &amp; ~(<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//v = 1</span></span><br><span class="line"><span class="comment">//如果把第3位上的设置为1</span></span><br><span class="line"><span class="comment">//0010 0101 </span></span><br><span class="line"><span class="comment">//0010 0101 | 0000 1000 = 0010 1101   按位或运算</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//v = 0</span></span><br><span class="line"><span class="comment">//如果把第2位上的位设置为0</span></span><br><span class="line"><span class="comment">//0010 0101</span></span><br><span class="line"><span class="comment">//~（1  &lt;&lt; 2）= ~(0000 0100) = (1111 1011)</span></span><br><span class="line"><span class="comment">//0010 0101 &amp; 1111 1011 = 0010 0001</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetBit</span><span class="params">(<span class="keyword">char</span> c, <span class="keyword">int</span> i)</span>  <span class="comment">//取出c的第i位上的数字</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (c &gt;&gt; i) &amp; <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//0010   0001  右移3位   0000   0100 &amp; 0000  0001 = 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FilpBit</span><span class="params">(<span class="keyword">char</span> &amp;c, <span class="keyword">int</span> i)</span>   <span class="comment">//翻转c的第i位</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    c = c ^ (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//0010 0101</span></span><br><span class="line"><span class="comment">//翻转第3位上的数字</span></span><br><span class="line"><span class="comment">//0010 0101 ^ 0000 1000 = 0010 1101</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OutPutResult</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">6</span>; ++j) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; GetBit(result[i], j);</span><br><span class="line">            <span class="keyword">if</span>(j &lt; <span class="number">5</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> kase;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;kase;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= kase ;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	    <span class="keyword">int</span> v, switchs;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">	        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">6</span>; ++j) &#123;</span><br><span class="line">	            <span class="built_in">cin</span> &gt;&gt; v;</span><br><span class="line">	            SetBit(old[i], j, v);</span><br><span class="line">	        &#125;</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; <span class="number">1</span> &lt;&lt; <span class="number">6</span>; ++n) &#123;  <span class="comment">//6个开关，2的6次方种情况，  (1 &lt;&lt; 6 == 2^6)</span></span><br><span class="line">	        <span class="built_in">memcpy</span>(lights, old, <span class="keyword">sizeof</span>(old));  <span class="comment">//还原lights数组</span></span><br><span class="line">	        switchs = n;</span><br><span class="line">	        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i) &#123;</span><br><span class="line">	            result[i] = switchs;  <span class="comment">//  0 0 1 0 1 0</span></span><br><span class="line">	            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">6</span>; ++j) &#123;</span><br><span class="line">	                <span class="keyword">if</span>(GetBit(switchs, j)) &#123;</span><br><span class="line">	                    <span class="keyword">if</span>(j &gt; <span class="number">0</span>) FilpBit(lights[i], j - <span class="number">1</span>);  <span class="comment">//翻转左边</span></span><br><span class="line">	                    FilpBit(lights[i], j); <span class="comment">//翻转本身</span></span><br><span class="line">	                    <span class="keyword">if</span>(j &lt; <span class="number">5</span>) FilpBit(lights[i], j + <span class="number">1</span>); <span class="comment">//翻转右边</span></span><br><span class="line">	                &#125;</span><br><span class="line">	            &#125;</span><br><span class="line">	            <span class="keyword">if</span>(i &lt; <span class="number">4</span>) lights[i + <span class="number">1</span>] ^= switchs;</span><br><span class="line">	            switchs = lights[i];</span><br><span class="line">	        &#125;</span><br><span class="line">	        <span class="keyword">if</span>(lights[<span class="number">4</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">	        	<span class="built_in">printf</span>(<span class="string">"PUZZLE #%d\n"</span>,i);</span><br><span class="line">	            OutPutResult();</span><br><span class="line">	            <span class="keyword">break</span>;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>os --第一章 操作系统引论</title>
-    <url>/sublog.github.io/2020/07/11/os%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script><h4 id="操作系统的目标和作用"><a href="#操作系统的目标和作用" class="headerlink" title="操作系统的目标和作用"></a>操作系统的目标和作用</h4><p>​        定义： ==os==是直接控制和管理计算机硬件、软件资源，合理地对各类作业进行调度，以方便用户使用的==程序集合==</p>
-<p>​       地位：系统硬件之上，所有其他软件之下</p>
-<p>​       目标：</p>
-<ul>
-<li>方便性 （如果没有os，c语言程序无法运行）</li>
-<li>有效性</li>
-<li>可扩充性</li>
-</ul>
-<h5 id="发展过程"><a href="#发展过程" class="headerlink" title="发展过程"></a>发展过程</h5>]]></content>
-      <categories>
-        <category>复习</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>完全背包问题</title>
-    <url>/sublog.github.io/2020/08/20/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>
-    <div id="aplayer-EiVKTSbn" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="1383205688" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"
-    ></div>
-<p>01背包问题是：每件物品只能选或不选</p>
-<p>完全背包问题是：每件物品有无限件可用</p>
-<p><img src= "/sublog.github.io/img/loading.gif" data-src="https://i.loli.net/2020/08/20/wsXD8SQ96LdvRcm.png" alt="image-20200820142308586"></p>
-<p><img src= "/sublog.github.io/img/loading.gif" data-src="https://i.loli.net/2020/08/20/uGS8ogMtPybqaOR.png" alt="image-20200820142327939"></p>
-<p>考虑状态表示： </p>
-<p>f [ i ] :  表示总体积i情况下，最大价值是多少</p>
-<p>result = max{ f [ 0 . . .  m ] }  //m表示背包容量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for(int i &#x3D; 0;i &lt; n;i++)</span><br><span class="line">&#123;</span><br><span class="line">	for(int j &#x3D; v[i];j &lt;&#x3D; m;j++)&#x2F;&#x2F;从小到大枚举</span><br><span class="line">	&#123;</span><br><span class="line">		f[j] &#x3D; max(f[j],f[j - v[i]] + w[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for(int j &#x3D; m;j &gt;&#x3D; v[i];j--) &#x2F;&#x2F;从大到小枚举</span><br><span class="line">	&#123;</span><br><span class="line">		for(int k &#x3D; 0;k * v[i] &lt;&#x3D; j;k++) &#x2F;&#x2F;枚举选择的物品</span><br><span class="line">		&#123;</span><br><span class="line">			f[j] &#x3D; max(f[j],f[j - k * v[i]] + k * w[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>数学归纳法：</p>
-<ol>
-<li>假设考虑第i- 1个物品之后，所有的f [ j ]都是正确的</li>
-<li>来证明：考虑完第 i 个物品后，所有的f [ j ] 也都是正确的</li>
-</ol>
-<p>对于某个 j 来说，如果最优解包含 k 个v [ i ]</p>
- <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v,w;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v &gt;&gt; w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = v;j &lt;= m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j],f[j - v] + w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; f[m] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>ACwing</category>
-      </categories>
-      <tags>
-        <tag>背包</tag>
-      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -106,10 +57,29 @@
       </tags>
   </entry>
   <entry>
+    <title>os --第一章 操作系统引论</title>
+    <url>/sublog.github.io/2020/07/11/os%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script><h4 id="操作系统的目标和作用"><a href="#操作系统的目标和作用" class="headerlink" title="操作系统的目标和作用"></a>操作系统的目标和作用</h4><p>​        定义： ==os==是直接控制和管理计算机硬件、软件资源，合理地对各类作业进行调度，以方便用户使用的==程序集合==</p>
+<p>​       地位：系统硬件之上，所有其他软件之下</p>
+<p>​       目标：</p>
+<ul>
+<li>方便性 （如果没有os，c语言程序无法运行）</li>
+<li>有效性</li>
+<li>可扩充性</li>
+</ul>
+<h5 id="发展过程"><a href="#发展过程" class="headerlink" title="发展过程"></a>发展过程</h5>]]></content>
+      <categories>
+        <category>复习</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode03.数组中重复的数字-1</title>
     <url>/sublog.github.io/2020/07/22/leetcode03-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>
-    <div id="aplayer-FCyEcaPL" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-YNEeACXz" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1434062381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"
     ></div>
 <h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>找出数组中重复的数字。</p>
@@ -151,10 +121,45 @@
       </tags>
   </entry>
   <entry>
+    <title>page</title>
+    <url>/sublog.github.io/2020/06/03/page/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>完全背包问题</title>
+    <url>/sublog.github.io/2020/08/20/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>
+    <div id="aplayer-xGxbIDTC" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="1383205688" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"
+    ></div>
+<p>01背包问题是：每件物品只能选或不选</p>
+<p>完全背包问题是：每件物品有无限件可用</p>
+<p><img src= "/sublog.github.io/img/loading.gif" data-src="https://i.loli.net/2020/08/20/wsXD8SQ96LdvRcm.png" alt="image-20200820142308586"></p>
+<p><img src= "/sublog.github.io/img/loading.gif" data-src="https://i.loli.net/2020/08/20/uGS8ogMtPybqaOR.png" alt="image-20200820142327939"></p>
+<p>考虑状态表示： </p>
+<p>f [ i ] :  表示总体积i情况下，最大价值是多少</p>
+<p>result = max{ f [ 0 . . .  m ] }  //m表示背包容量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for(int i &#x3D; 0;i &lt; n;i++)</span><br><span class="line">&#123;</span><br><span class="line">	for(int j &#x3D; v[i];j &lt;&#x3D; m;j++)&#x2F;&#x2F;从小到大枚举</span><br><span class="line">	&#123;</span><br><span class="line">		f[j] &#x3D; max(f[j],f[j - v[i]] + w[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for(int j &#x3D; m;j &gt;&#x3D; v[i];j--) &#x2F;&#x2F;从大到小枚举</span><br><span class="line">	&#123;</span><br><span class="line">		for(int k &#x3D; 0;k * v[i] &lt;&#x3D; j;k++) &#x2F;&#x2F;枚举选择的物品</span><br><span class="line">		&#123;</span><br><span class="line">			f[j] &#x3D; max(f[j],f[j - k * v[i]] + k * w[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数学归纳法：</p>
+<ol>
+<li>假设考虑第i- 1个物品之后，所有的f [ j ]都是正确的</li>
+<li>来证明：考虑完第 i 个物品后，所有的f [ j ] 也都是正确的</li>
+</ol>
+<p>对于某个 j 来说，如果最优解包含 k 个v [ i ]</p>
+ <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v,w;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v &gt;&gt; w;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = v;j &lt;= m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j],f[j - v] + w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; f[m] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>ACwing</category>
+      </categories>
+      <tags>
+        <tag>背包</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>花书 --应用数学与机器学习基础</title>
     <url>/sublog.github.io/2020/06/25/%E8%8A%B1%E4%B9%A6-%E5%BA%94%E7%94%A8%E6%95%B0%E5%AD%A6%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>
-    <div id="aplayer-WbvhYVRR" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-GPxLXUDo" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1418175693" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"
     ></div>
 <blockquote id="fn_top_img">
@@ -185,10 +190,5 @@
       <tags>
         <tag>线性代数</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>page</title>
-    <url>/sublog.github.io/2020/06/03/page/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\sublog.github.io\css\APlayer.min.css"><script src="\sublog.github.io\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\sublog.github.io\js\Meting.min.js"></script>]]></content>
   </entry>
 </search>
