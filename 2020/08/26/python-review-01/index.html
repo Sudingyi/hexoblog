@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>python review--01 | 小苏在线敲代码</title><meta name="description" content="对象和变量1.一切都是对象所有的对象都具有三个特征：  身份 每一个对象唯一身份标识，可以使用内建函数id( )查看，所得到的值也可以认为是该对象的内存地址。 12a &#x3D; b &#x3D; 34id(x) &#x3D; id(y) 引用计数  类型  b继承a 类型可以通过type( )方法来查看类型， 123#以字符串形式输出它的类型名字type(&#39;a&#39;) --&gt;strtype(str).__name__ -"><meta name="keywords" content="python"><meta name="author" content="Augenstern _Su"><meta name="copyright" content="Augenstern _Su"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/sublog.github.io/img/favion1.png"><link rel="canonical" href="https://sudingyi.github.io/sublog.github.io/2020/08/26/python-review-01/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="python review--01"><meta property="og:url" content="https://sudingyi.github.io/sublog.github.io/2020/08/26/python-review-01/"><meta property="og:site_name" content="小苏在线敲代码"><meta property="og:description" content="对象和变量1.一切都是对象所有的对象都具有三个特征：  身份 每一个对象唯一身份标识，可以使用内建函数id( )查看，所得到的值也可以认为是该对象的内存地址。 12a &#x3D; b &#x3D; 34id(x) &#x3D; id(y) 引用计数  类型  b继承a 类型可以通过type( )方法来查看类型， 123#以字符串形式输出它的类型名字type(&#39;a&#39;) --&gt;strtype(str).__name__ -"><meta property="og:image" content="https://sudingyi.github.io/sublog.github.io/img/six.jpg"><meta property="article:published_time" content="2020-08-26T01:08:17.000Z"><meta property="article:modified_time" content="2020-08-31T07:03:38.412Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/sublog.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="next" title="完全背包问题" href="https://sudingyi.github.io/sublog.github.io/2020/08/20/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/sublog.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"Press","message_next":"to bookmark this page"},"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/sublog.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/sublog.github.io/archives/"><div class="headline">Articles</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/sublog.github.io/tags/"><div class="headline">Tags</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/sublog.github.io/categories/"><div class="headline">Categories</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/sublog.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/playlist/"><i class="fa-fw fas fa-music"></i><span> playlist</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#对象和变量"><span class="toc-number">1.</span> <span class="toc-text">对象和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-一切都是对象"><span class="toc-number">1.1.</span> <span class="toc-text">1.一切都是对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-变量"><span class="toc-number">1.2.</span> <span class="toc-text">2.变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数字"><span class="toc-number">2.</span> <span class="toc-text">数字</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#更新数字对象：创建了新的对象，然后让变量指向新的对象"><span class="toc-number">2.1.</span> <span class="toc-text">更新数字对象：创建了新的对象，然后让变量指向新的对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除数字对象：-del-变量名"><span class="toc-number">2.2.</span> <span class="toc-text">删除数字对象： del  变量名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#布尔值"><span class="toc-number">3.</span> <span class="toc-text">布尔值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#布尔运算：-优先级由高到低：not-，and-，-or"><span class="toc-number">3.1.</span> <span class="toc-text">布尔运算： 优先级由高到低：not ，and ， or</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复数"><span class="toc-number">4.</span> <span class="toc-text">复数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基数"><span class="toc-number">5.</span> <span class="toc-text">基数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#类型转换：转换失败会产生ValueError异常。"><span class="toc-number">5.1.</span> <span class="toc-text">类型转换：转换失败会产生ValueError异常。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#功能函数："><span class="toc-number">5.2.</span> <span class="toc-text">功能函数：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串"><span class="toc-number">6.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#内建函数"><span class="toc-number">6.1.</span> <span class="toc-text">内建函数</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><header class="post-bg" id="page-header" style="background-image: url(/sublog.github.io/img/six.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/sublog.github.io/">小苏在线敲代码</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/sublog.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/playlist/"><i class="fa-fw fas fa-music"></i><span> playlist</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/sublog.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">python review--01</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="创建于 2020-08-26 09:08:17"><i class="far fa-calendar-alt fa-fw"></i> 创建于 2020-08-26</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-08-31 15:03:38"><i class="fas fa-history fa-fw"></i> Updated 2020-08-31</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>Comments:</span><a href="/sublog.github.io/2020/08/26/python-review-01/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/sublog.github.io/2020/08/26/python-review-01/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h4 id="对象和变量"><a href="#对象和变量" class="headerlink" title="对象和变量"></a>对象和变量</h4><h5 id="1-一切都是对象"><a href="#1-一切都是对象" class="headerlink" title="1.一切都是对象"></a>1.一切都是对象</h5><p>所有的对象都具有三个特征：</p>
+<ul>
+<li><p>身份</p>
+<p>每一个对象唯一身份标识，可以使用内建函数id( )查看，所得到的值也可以认为是该对象的内存地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = b = 34</span><br><span class="line">id(x) = id(y)</span><br></pre></td></tr></table></figure>
+<p>引用计数</p>
+</li>
+<li><p>类型</p>
+<p><img src= "/sublog.github.io/img/loading.gif" data-src="https://i.loli.net/2020/08/26/GTIvx7t9y8ZCHej.png" alt="image-20200826104012089"></p>
+<p>b继承a</p>
+<p>类型可以通过type( )方法来查看类型，</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#以字符串形式输出它的类型名字</span></span><br><span class="line">type('a') --&gt;str</span><br><span class="line">type(str).__name__ --&gt;'type'</span><br></pre></td></tr></table></figure>
+<p>使用 isinstance ( )方法来验证类型</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">isinstance(object,classinfo)</span><br><span class="line"><span class="comment">#参数</span></span><br><span class="line">object --实例对象</span><br><span class="line">classinfo --可以直接或间接类名，基本类型或者由它们组成的元组</span><br><span class="line"></span><br><span class="line">isinstance(3,int) --&gt; True</span><br><span class="line">isinstance(3.7,(str,float,int)) --&gt;True</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>值  操作符：&lt; &gt; &lt;= &gt;= == != &lt;&gt;  返回值：布尔值</p>
+</li>
+</ul>
+<h5 id="2-变量"><a href="#2-变量" class="headerlink" title="2.变量"></a>2.变量</h5><p>变量，是在程序中为了方便引用内存中的值而为它所取的名字。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增量赋值，与C语言中的算数自反赋值运算一样</span></span><br><span class="line">int_example *= <span class="number">3</span></span><br><span class="line">string_example += <span class="string">'Try it!'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多重赋值</span></span><br><span class="line">x = y = z = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多元赋值，很有用，用起来效率很高，括号是可选的，但保留可以增强代码可读性</span></span><br><span class="line">(x, y, z) = (<span class="number">1</span>, <span class="number">2</span>, <span class="string">'a string'</span>)</span><br><span class="line"></span><br><span class="line">(x, y) = (y, x)  <span class="comment"># 对x, y的值做交换，不需要第三个辅助变量了</span></span><br></pre></td></tr></table></figure>
+<p>变量名 标识符</p>
+<p>1.命名规则：只能包含 小写字母，大写字母，下划线，数字，且不能以数字开头，<strong>python以下划线开头的名字有特殊含义。</strong></p>
+<p>2.关键字</p>
+<p>3.builtins 进入解释器时，builtins模块自动导入，一般情况下，定义的标识符不要冲突。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> builtins</span><br><span class="line">dir(builtins)   <span class="comment">#参数为对象、变量、类型  返回模块的属性列表</span></span><br><span class="line"></span><br><span class="line">dir()  <span class="comment">#返回当前模块属性列表</span></span><br><span class="line">dir( [ ])  <span class="comment">#查看列表的方法</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">90</span></span><br><span class="line">b = <span class="number">90</span></span><br><span class="line">a <span class="keyword">is</span> b</span><br><span class="line">--&gt;True  #连等就是True，不连等就是False 整数小于256都是True</span><br></pre></td></tr></table></figure>
+<h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><p>注意：</p>
+<p> 浮点数除法：/    两个整数进行运算时，还会得到浮点型结果</p>
+<p> 整数除法： //</p>
+<p>数字可以直接访问，是不可更改并且不可分割的原子类型。 不可更改意味着变更数字值的实质是新对象的创建。</p>
+<h5 id="更新数字对象：创建了新的对象，然后让变量指向新的对象"><a href="#更新数字对象：创建了新的对象，然后让变量指向新的对象" class="headerlink" title="更新数字对象：创建了新的对象，然后让变量指向新的对象"></a>更新数字对象：创建了新的对象，然后让变量指向新的对象</h5><h5 id="删除数字对象：-del-变量名"><a href="#删除数字对象：-del-变量名" class="headerlink" title="删除数字对象： del  变量名"></a>删除数字对象： del  变量名</h5><p>注意：注意引用计数与对象之间</p>
+<h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><p>事实上，布尔型是整型的子类，对应整型1和0</p>
+<h5 id="布尔运算：-优先级由高到低：not-，and-，-or"><a href="#布尔运算：-优先级由高到低：not-，and-，-or" class="headerlink" title="布尔运算： 优先级由高到低：not ，and ， or"></a>布尔运算： 优先级由高到低：not ，and ， or</h5><p>要善于运用括号避免问题</p>
+<h4 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h4><p>real + imag j  注意：虚数部分结尾是j 或 J</p>
+<p>real 实数部分，imag虚数部分，还有一个方法，conjugate（ ），用来获取共轭复数。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a_complex = <span class="number">3.5</span> + <span class="number">2.9</span> j</span><br><span class="line">a_complex.real  --&gt; 3.5</span><br><span class="line">a_complex.imag --&gt; 2.9</span><br><span class="line">a_complex.conjugate()  --&gt; (3.5-2.9j)</span><br></pre></td></tr></table></figure>
+<h4 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h4><p>0b 或者 0B表示二进制    0b10  —&gt;2</p>
+<p>0o 或者 0O表示八进制    0o10  —&gt;8</p>
+<p>0x 或者 0X表示十六进制  0x10  —&gt;16</p>
+<h5 id="类型转换：转换失败会产生ValueError异常。"><a href="#类型转换：转换失败会产生ValueError异常。" class="headerlink" title="类型转换：转换失败会产生ValueError异常。"></a>类型转换：转换失败会产生<code>ValueError</code>异常。</h5><p>基本规则：整型转换为浮点型，非复数转换为复数。总之，简单类型向复杂类型转换，不精确向更精确类型转换。</p>
+<ul>
+<li><code>int()</code></li>
+<li><code>float()</code></li>
+<li><code>complex()</code></li>
+<li><code>bool()</code></li>
+</ul>
+<h5 id="功能函数："><a href="#功能函数：" class="headerlink" title="功能函数："></a>功能函数：</h5><p>abs( ) :  返回绝对值，如果参数是整型，返回整型，如果是浮点型，返回浮点类型， 同样也可用于复数绝对值的计算，即返回实部和虚部平方和的二次方根。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abs(3 +4j) --&gt; 5.0</span><br><span class="line">abs(4.5) --&gt; 4.5</span><br><span class="line">abs(-3) --&gt; 3</span><br></pre></td></tr></table></figure>
+<p>divmod ( ) : 此函数将除法和求余结合起来，返回一个包含商和余数的元组.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">divmod(2.5,10) --&gt; (0.0,2.5)</span><br><span class="line">divmod(10,3)  --&gt; (3,1)</span><br></pre></td></tr></table></figure>
+<p>pow ( ) : 幂运算  传两个参数</p>
+<p>round ( ) : 做真正的四舍五入！可以用第二个参数指定精确到小数点后第几位：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">round(4.499)  -&gt; 4</span><br><span class="line">round(4.6)    -&gt; 5</span><br><span class="line">round(4.51)   -&gt; 5</span><br><span class="line">round(4.492,2)-&gt; 4.49</span><br><span class="line">round(4.499,2)-&gt; 4.5</span><br></pre></td></tr></table></figure>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>字符串由一系列Unicode码位组成的不可变序列</p>
+<p>使用内建函数<code>len（）</code>可以获得字符串长度</p>
+<p>不可变指无法对字符串本身进行更改操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'a'</span><span class="string">'b'</span></span><br><span class="line">s</span><br><span class="line">---&gt; 'ab'</span><br><span class="line"></span><br><span class="line"><span class="comment">#常见的转义符：`\n`（换行符）、`\t`（Tab制表符）、`\'`（单引号）、`\"`（双引号）、`\\`（反斜线）</span></span><br></pre></td></tr></table></figure>
+<h5 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input( ) <span class="comment">#获取用户输入，返回字符串</span></span><br><span class="line">chr( )  <span class="comment">#接收一个整数，返回对应的Unicode字符</span></span><br><span class="line">ord( )  <span class="comment">#功能与chr( )相反</span></span><br></pre></td></tr></table></figure>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">本文作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Augenstern _Su</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">本文链接: </span><span class="post-copyright-info"><a href="https://sudingyi.github.io/sublog.github.io/2020/08/26/python-review-01/">https://sudingyi.github.io/sublog.github.io/2020/08/26/python-review-01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/sublog.github.io/tags/python/">python</a></div><div class="post_share"><div class="social-share" data-image="/sublog.github.io/img/six.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="/sublog.github.io/img/blog.gif" alt="blog" onclick="window.open('/sublog.github.io/img/blog.gif')"/><div class="post-qr-code__desc">blog</div></li><li class="reward-item"><img class="post-qr-code__img" src="/sublog.github.io/img/alipay.jpg" alt="alipay" onclick="window.open('/sublog.github.io/img/alipay.jpg')"/><div class="post-qr-code__desc">alipay</div></li></ul></div></button></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/sublog.github.io/2020/08/20/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"><img class="next-cover" data-src="/sublog.github.io/img/sun.jpg" onerror="onerror=null;src='/sublog.github.io/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">完全背包问题</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'T7qN1ToxVzoTahDCDTzFDAfk-MdYXbMMI',
+  appKey: '4leTxjF4MexFFnvXkwxDlagt',
+  placeholder: '一星陨落，黯淡不了星空灿烂； 一花凋零，荒芜不了整个春天。 ——巴尔扎克',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'en',
+  recordIP: false,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" style="background-image: url(/sublog.github.io/img/six.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By Augenstern _Su</div><div class="framework-info"></div><div class="footer_custom_text">Hi, welcome to my blog !</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font_plus" title="Increase Font Size"><i class="fas fa-plus"></i></button><button id="font_minus" title="Decrease Font Size"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="Switch Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="Setting"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/sublog.github.io/js/utils.js"></script><script src="/sublog.github.io/js/main.js"></script><script src="/sublog.github.io/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script id="ribbon_piao" mobile="false" src="/sublog.github.io/js/third-party/piao.js"></script><script src="/sublog.github.io/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/sublog.github.io/js/third-party/click_heart.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/f7af885d.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'f7af885d',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtn = document.getElementById("chat_btn")
+  chatBtn.addEventListener("click", function(){
+    daovoice('show')
+  });
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="/sublog.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/sublog.github.io/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
